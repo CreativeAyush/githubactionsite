@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,13 +12,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: configure aws credentials
+    - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-accesss-key-id: ${{secrets.ACCESSKEY}}
-        aws-secret-access-key: ${{secrets.SECRETACCESSKEY}}
-        aws_session_token: ${{secrets.SESSIONTOKEN}}
+        aws-access-key-id: ${{ secrets.ACCESSKEY }}
+        aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
+        aws-session-token: ${{ secrets.SESSIONTOKEN }}
 
-    -name: Deploy statis website
-     run: aws s3 sync . s3://githubactionayush --delete
-      
+    - name: Deploy static website
+      run: aws s3 sync . s3://githubactionayush --delete
