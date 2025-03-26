@@ -14,5 +14,10 @@ jobs:
     - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-accesss-key-id: ${{secrets.AWS
+        aws-accesss-key-id: ${{secrets.ACCESSKEY}}
+        aws-secret-access-key: ${{secrets.SECRETACCESSKEY}}
+        aws_session_token: ${{secrets.SESSIONTOKEN}}
+
+    -name: Deploy statis website
+     run: aws s3 sync . s3://githubactionayush --delete
       
