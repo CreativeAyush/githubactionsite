@@ -18,6 +18,7 @@ jobs:
         aws-access-key-id: ${{ secrets.ACCESSKEY }}
         aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
         aws-session-token: ${{ secrets.SESSIONTOKEN }}
+        aws-region: us-east-1
 
     - name: Deploy static website
       run: aws s3 sync . s3://githubactionayush --delete
